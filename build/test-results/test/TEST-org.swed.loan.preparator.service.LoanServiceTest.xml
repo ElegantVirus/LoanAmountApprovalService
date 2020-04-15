@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.swed.loan.preparator.service.LoanServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-15T21:12:13" hostname="DESKTOP-BAG4FQ1" time="5.111">
+  <properties/>
+  <testcase name="getLoansKillingThemselves()" classname="org.swed.loan.preparator.service.LoanServiceTest" time="5.111"/>
+  <system-out><![CDATA[00:12:13.139 [Test worker] DEBUG org.springframework.test.util.ReflectionTestUtils - Setting field 'approvedLoans' of type [null] on target object [org.swed.loan.preparator.service.LoanService@386b6770] or target class [class org.swed.loan.preparator.service.LoanService] to value [{org.swed.loan.preparator.entity.ApprovedLoan@2f0236b1=00:12:13.072, org.swed.loan.preparator.entity.ApprovedLoan@286a7981=00:12:13.067}]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
