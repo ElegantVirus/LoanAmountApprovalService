@@ -13,6 +13,19 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * I was trying to test the concurrency really hard, however :
+ * a) Whenever I tried creating threads manually,
+ * they wouldn't call the synchronised methods at
+ * the *exact* same time so they therefore weren't valid
+ * b) I tried @RunWith(ConcurrentTestRunner.class) and it worked
+ * perfectly, too perfectly, because I would get an exception
+ * when calling the methods concurrently (as expected)
+ * and exception handling when it's thrown not in the main thread
+ * is an awful, awful thing.
+ * <p>
+ * So I gave up. :(
+ */
 public class LoanServiceTest {
     LoanService loanService = new LoanService();
 
@@ -58,6 +71,25 @@ public class LoanServiceTest {
         });
         assertEquals(
                 "It is not your loan to approve!",
+                exception.getMessage()
+        );
+    }
+
+    @Test
+    public void approveLoanSecondTime_fails() {
+        loanService.requestLoanApproval(
+                "xx-xxxx-xxx",
+                BigDecimal.valueOf(117),
+                "approver1",
+                "approver2",
+                null
+        );
+        loanService.approveLoan("xx-xxxx-xxx", "approver1");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            loanService.approveLoan("xx-xxxx-xxx", "approver1");
+        });
+        assertEquals(
+                "The loan has already been approved by you!",
                 exception.getMessage()
         );
     }
