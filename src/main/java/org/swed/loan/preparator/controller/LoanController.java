@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 @RequestMapping("loans")
 @Controller
 public class LoanController {
-    LoanService loanService;
+    final LoanService loanService;
 
     @Autowired
     public LoanController(LoanService loanService) {

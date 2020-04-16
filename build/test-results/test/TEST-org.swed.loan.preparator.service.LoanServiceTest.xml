@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.swed.loan.preparator.service.LoanServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-15T21:12:13" hostname="DESKTOP-BAG4FQ1" time="5.111">
+<testsuite name="org.swed.loan.preparator.service.LoanServiceTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-04-16T05:14:23" hostname="DESKTOP-BAG4FQ1" time="5.137">
   <properties/>
-  <testcase name="getLoansKillingThemselves()" classname="org.swed.loan.preparator.service.LoanServiceTest" time="5.111"/>
-  <system-out><![CDATA[00:12:13.139 [Test worker] DEBUG org.springframework.test.util.ReflectionTestUtils - Setting field 'approvedLoans' of type [null] on target object [org.swed.loan.preparator.service.LoanService@386b6770] or target class [class org.swed.loan.preparator.service.LoanService] to value [{org.swed.loan.preparator.entity.ApprovedLoan@2f0236b1=00:12:13.072, org.swed.loan.preparator.entity.ApprovedLoan@286a7981=00:12:13.067}]
+  <testcase name="approveLoanBadUsername_fails()" classname="org.swed.loan.preparator.service.LoanServiceTest" time="0.025"/>
+  <testcase name="getInformation_empty()" classname="org.swed.loan.preparator.service.LoanServiceTest" time="0.001"/>
+  <testcase name="approveLoanBadId_fails()" classname="org.swed.loan.preparator.service.LoanServiceTest" time="0.001"/>
+  <testcase name="requestLoanTwoTimes_fails()" classname="org.swed.loan.preparator.service.LoanServiceTest" time="0.001"/>
+  <testcase name="getLoansKillingThemselves()" classname="org.swed.loan.preparator.service.LoanServiceTest" time="5.097"/>
+  <testcase name="requestLoanBadId_fails()" classname="org.swed.loan.preparator.service.LoanServiceTest" time="0.002"/>
+  <testcase name="getInformation_afterFlow()" classname="org.swed.loan.preparator.service.LoanServiceTest" time="0.004"/>
+  <testcase name="approveLoanSecondTime_fails()" classname="org.swed.loan.preparator.service.LoanServiceTest" time="0.001"/>
+  <system-out><![CDATA[08:14:23.044 [Test worker] WARN org.swed.loan.preparator.service.LoanService - User with id username just tried to approve someone else's loan with id xx-xxxx-xxx
+08:14:23.058 [Test worker] WARN org.swed.loan.preparator.service.LoanService - An attempt to approve non existent loan with XXodcmlkem id has been made
+08:14:23.060 [Test worker] WARN org.swed.loan.preparator.service.LoanService - Customer with id XX-XXXX-XXX has just requested for one too many loans.
+08:14:23.154 [Test worker] DEBUG org.springframework.test.util.ReflectionTestUtils - Setting field 'approvedLoans' of type [null] on target object [org.swed.loan.preparator.service.LoanService@59348905] or target class [class org.swed.loan.preparator.service.LoanService] to value [{org.swed.loan.preparator.entity.ApprovedLoan@8ea229d=08:14:23.072, org.swed.loan.preparator.entity.ApprovedLoan@713128be=08:14:23.077}]
+08:14:28.160 [Test worker] WARN org.swed.loan.preparator.service.LoanService - Customer's id XXodcmlkem does not meet the pattern requirements
+08:14:28.163 [Test worker] DEBUG org.springframework.test.util.ReflectionTestUtils - Setting field 'statisticsPeriod' of type [null] on target object [org.swed.loan.preparator.service.LoanService@7462b3f4] or target class [class org.swed.loan.preparator.service.LoanService] to value [60]
+08:14:28.166 [Test worker] WARN org.swed.loan.preparator.service.LoanService - User with id approver1 just tried to approve a loan with id xx-xxxx-xxx for the second time
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

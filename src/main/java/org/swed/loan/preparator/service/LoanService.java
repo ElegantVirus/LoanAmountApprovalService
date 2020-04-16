@@ -21,8 +21,8 @@ import java.util.Set;
 @Getter
 public class LoanService {
 
-    private Map<String, Loan> pendingLoans = new HashMap<>();
-    private Map<ApprovedLoan, LocalTime> approvedLoans = new HashMap<>();
+    private final Map<String, Loan> pendingLoans = new HashMap<>();
+    private final Map<ApprovedLoan, LocalTime> approvedLoans = new HashMap<>();
     @Value("${statistics.time.seconds:60}")
     private long statisticsPeriod;
 

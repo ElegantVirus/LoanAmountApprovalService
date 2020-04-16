@@ -27,14 +27,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * So I gave up. :(
  */
 public class LoanServiceTest {
-    LoanService loanService = new LoanService();
+    final LoanService loanService = new LoanService();
 
     @Test
     public void requestLoanTwoTimes_fails() {
         requestSimpleLoan("XX-XXXX-XXX");
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            requestSimpleLoan("XX-XXXX-XXX");
-        });
+        Exception exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> requestSimpleLoan("XX-XXXX-XXX")
+        );
         assertEquals(
                 "There can be only one pending loan request for one customer!",
                 exception.getMessage()
@@ -43,9 +44,10 @@ public class LoanServiceTest {
 
     @Test
     public void requestLoanBadId_fails() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            requestSimpleLoan("XXodcmlkem");
-        });
+        Exception exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> requestSimpleLoan("XXodcmlkem")
+        );
         assertEquals(
                 "Bad customer's id!",
                 exception.getMessage()
@@ -54,9 +56,10 @@ public class LoanServiceTest {
 
     @Test
     public void approveLoanBadId_fails() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            loanService.approveLoan("XXodcmlkem", "username");
-        });
+        Exception exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> loanService.approveLoan("XXodcmlkem", "username")
+        );
         assertEquals(
                 "Loan with such id does not exist!",
                 exception.getMessage()
@@ -66,9 +69,10 @@ public class LoanServiceTest {
     @Test
     public void approveLoanBadUsername_fails() {
         requestSimpleLoan("xx-xxxx-xxx");
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            loanService.approveLoan("xx-xxxx-xxx", "username");
-        });
+        Exception exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> loanService.approveLoan("xx-xxxx-xxx", "username")
+        );
         assertEquals(
                 "It is not your loan to approve!",
                 exception.getMessage()
@@ -85,9 +89,10 @@ public class LoanServiceTest {
                 null
         );
         loanService.approveLoan("xx-xxxx-xxx", "approver1");
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            loanService.approveLoan("xx-xxxx-xxx", "approver1");
-        });
+        Exception exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> loanService.approveLoan("xx-xxxx-xxx", "approver1")
+        );
         assertEquals(
                 "The loan has already been approved by you!",
                 exception.getMessage()
